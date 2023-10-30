@@ -1,0 +1,47 @@
+<!-- Copyright 2000-2023 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. -->
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+
+<idea-plugin>
+
+  <!-- Unique id for this plugin. Must stay constant for the life of the plugin. -->
+  <id>de.hsrm.mi.ba.plugin.example.plugin.settings</id>
+
+  <!-- Text to display as name on Settings | Plugin page -->
+  <name>SDK: Settings Example</name>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.java</depends>
+
+  <!-- Text to display as description on Settings | Plugin page -->
+  <description>
+    <![CDATA[
+      Demonstrates implementing a custom settings panel.<br>Adds a settings panel to the <b>Settings</b>
+      panel under <b>Tools</b>.
+    ]]>
+  </description>
+  <change-notes>
+    <![CDATA[
+      <ul>
+        <li><b>1.0</b> Initial SDK settings content release for 2020.1</li>
+      </ul>
+    ]]>
+  </change-notes>
+
+  <!-- Text to display as company information on Settings | Plugin page -->
+  <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationConfigurable
+            groupId="camunda.plugin.configuration"
+            displayName="Camunda-Plugin"
+            instance="de.hsrm.mi.ba.plugin.extensions.MainConfigurable"
+            id="camunda.plugin.configuration">
+    </applicationConfigurable>
+  </extensions>
+
+  <actions>
+  </actions>
+
+</idea-plugin>

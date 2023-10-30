@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<svg width="81" height="80" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="pluginsdk_80-a" x1="-.031%" x2="100.053%" y1="49.963%" y2="49.963%">
+   <stop offset="25.81%" stop-color="#F97A12"/>
+   <stop offset="45.91%" stop-color="#B07B58"/>
+   <stop offset="72.41%" stop-color="#577BAE"/>
+   <stop offset="91.05%" stop-color="#1E7CE5"/>
+   <stop offset="100%" stop-color="#087CFA"/>
+  </linearGradient>
+  <linearGradient id="pluginsdk_80-b" x1="27.55%" x2="82.223%" y1="34.514%" y2="77.605%">
+   <stop offset="0%" stop-color="#F97A12"/>
+   <stop offset="7.18%" stop-color="#CB7A3E"/>
+   <stop offset="15.41%" stop-color="#9E7B6A"/>
+   <stop offset="24.2%" stop-color="#757B91"/>
+   <stop offset="33.44%" stop-color="#537BB1"/>
+   <stop offset="43.24%" stop-color="#387CCC"/>
+   <stop offset="53.81%" stop-color="#237CE0"/>
+   <stop offset="65.52%" stop-color="#147CEF"/>
+   <stop offset="79.25%" stop-color="#0B7CF7"/>
+   <stop offset="100%" stop-color="#087CFA"/>
+  </linearGradient>
+  <linearGradient id="pluginsdk_80-c" x1="63.121%" x2="40.793%" y1="97.699%" y2="-6.587%">
+   <stop offset="0%" stop-color="#FE315D"/>
+   <stop offset="7.84%" stop-color="#CB417E"/>
+   <stop offset="16.01%" stop-color="#9E4E9B"/>
+   <stop offset="24.74%" stop-color="#755BB4"/>
+   <stop offset="33.92%" stop-color="#5365CA"/>
+   <stop offset="43.65%" stop-color="#386DDB"/>
+   <stop offset="54.14%" stop-color="#2374E9"/>
+   <stop offset="65.76%" stop-color="#1478F3"/>
+   <stop offset="79.4%" stop-color="#0B7BF8"/>
+   <stop offset="100%" stop-color="#087CFA"/>
+  </linearGradient>
+  <linearGradient id="pluginsdk_80-d" x1="25.331%" x2="93.854%" y1="24.119%" y2="132.621%">
+   <stop offset="0%" stop-color="#FE315D"/>
+   <stop offset="4.023%" stop-color="#F63462"/>
+   <stop offset="10.37%" stop-color="#DF3A71"/>
+   <stop offset="16.67%" stop-color="#C24383"/>
+   <stop offset="29.12%" stop-color="#AD4A91"/>
+   <stop offset="54.98%" stop-color="#755BB4"/>
+   <stop offset="91.75%" stop-color="#1D76ED"/>
+   <stop offset="100%" stop-color="#087CFA"/>
+  </linearGradient>
+  <symbol enable-background="new 0 0 70 70" id="svg_17" version="1.1" viewBox="0 0 70 70" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+   <g>
+    <g>
+     <linearGradient gradientUnits="userSpaceOnUse" id="svg_16" x1="0.79" x2="33.32" y1="40.09" y2="40.09">
+      <stop offset="0.26" stop-color="#F97A12"/>
+      <stop offset="0.46" stop-color="#B07B58"/>
+      <stop offset="0.72" stop-color="#577BAE"/>
+      <stop offset="0.91" stop-color="#1E7CE5"/>
+      <stop offset="1" stop-color="#087CFA"/>
+     </linearGradient>
+     <polygon fill="url(#svg_16)" points="17.7,54.6 0.8,41.2 9.2,25.6 33.3,35   "/>
+     <linearGradient gradientUnits="userSpaceOnUse" id="svg_15" x1="25.77" x2="79.42" y1="24.88" y2="54.57">
+      <stop offset="0" stop-color="#F97A12"/>
+      <stop offset="0.07" stop-color="#CB7A3E"/>
+      <stop offset="0.15" stop-color="#9E7B6A"/>
+      <stop offset="0.24" stop-color="#757B91"/>
+      <stop offset="0.33" stop-color="#537BB1"/>
+      <stop offset="0.43" stop-color="#387CCC"/>
+      <stop offset="0.54" stop-color="#237CE0"/>
+      <stop offset="0.66" stop-color="#147CEF"/>
+      <stop offset="0.79" stop-color="#0B7CF7"/>
+      <stop offset="1" stop-color="#087CFA"/>
+     </linearGradient>
+     <polygon fill="url(#svg_15)" points="70,18.7 68.7,59.2 41.8,70 25.6,59.6 49.3,35 38.9,12.3 48.2,1.1   "/>
+     <linearGradient gradientUnits="userSpaceOnUse" id="svg_14" x1="63.23" x2="48.29" y1="42.92" y2="-1.72">
+      <stop offset="0" stop-color="#FE315D"/>
+      <stop offset="0.08" stop-color="#CB417E"/>
+      <stop offset="0.16" stop-color="#9E4E9B"/>
+      <stop offset="0.25" stop-color="#755BB4"/>
+      <stop offset="0.34" stop-color="#5365CA"/>
+      <stop offset="0.44" stop-color="#386DDB"/>
+      <stop offset="0.54" stop-color="#2374E9"/>
+      <stop offset="0.66" stop-color="#1478F3"/>
+      <stop offset="0.79" stop-color="#0B7BF8"/>
+      <stop offset="1" stop-color="#087CFA"/>
+     </linearGradient>
+     <polygon fill="url(#svg_14)" points="70,18.7 48.7,43.9 38.9,12.3 48.2,1.1   "/>
+     <linearGradient gradientUnits="userSpaceOnUse" id="svg_13" x1="10.72" x2="55.52" y1="16.47" y2="90.58">
+      <stop offset="0" stop-color="#FE315D"/>
+      <stop offset="0.04" stop-color="#F63462"/>
+      <stop offset="0.1" stop-color="#DF3A71"/>
+      <stop offset="0.17" stop-color="#C24383"/>
+      <stop offset="0.29" stop-color="#AD4A91"/>
+      <stop offset="0.55" stop-color="#755BB4"/>
+      <stop offset="0.92" stop-color="#1D76ED"/>
+      <stop offset="1" stop-color="#087CFA"/>
+     </linearGradient>
+     <polygon fill="url(#svg_13)" points="33.7,58.1 5.6,68.3 10.1,52.5 16,33.1 0,27.7 10.1,0 32.1,2.7 53.7,27.4   "/>
+    </g>
+    <g>
+     <rect fill="#000000" height="43.2" width="43.2" x="13.7" y="13.5"/>
+     <rect fill="#FFFFFF" height="2.7" width="16.2" x="17.7" y="48.6"/>
+     <polygon fill="#FFFFFF" points="29.4,22.4 29.4,19.1 20.4,19.1 20.4,22.4 23,22.4 23,33.7 20.4,33.7 20.4,37 29.4,37     29.4,33.7 26.9,33.7 26.9,22.4   "/>
+     <path d="m38,37.3c-1.4,0 -2.6,-0.3 -3.5,-0.8c-0.9,-0.5 -1.7,-1.2 -2.3,-1.9l2.5,-2.8c0.5,0.6 1,1 1.5,1.3c0.5,0.3 1.1,0.5 1.7,0.5c0.7,0 1.3,-0.2 1.8,-0.7c0.4,-0.5 0.6,-1.2 0.6,-2.3l0,-11.5l4,0l0,11.7c0,1.1 -0.1,2 -0.4,2.8c-0.3,0.8 -0.7,1.4 -1.3,2c-0.5,0.5 -1.2,1 -2,1.2c-0.8,0.3 -1.6,0.5 -2.6,0.5" fill="#FFFFFF"/>
+    </g>
+   </g>
+  </symbol>
+  <symbol data-name="Layer 1" id="svg_20" viewBox="0 0 885 303" xmlns="http://www.w3.org/2000/svg">
+   <defs>
+    <style>.cls-1{fill:#fff;}</style>
+   </defs>
+   <title>Logo_White</title>
+   <path class="cls-1" d="m49.63,216.28c32.59,0 49.51,-19.27 49.54,-53.07l0,-28.06l-31.38,0l0,30.18c0,15.09 -6.65,20.51 -17.22,20.51s-17.19,-5.45 -17.18,-20.54l0.1,-114.07c0,-15.08 6.65,-20.81 17.22,-20.8s17.19,5.75 17.18,20.83l0,22.64l31.38,0l0,-20.52c0.02,-33.81 -16.86,-53.13 -49.45,-53.16s-49.51,19.27 -49.54,53.07l-0.09,109.84c-0.03,33.8 16.81,53.13 49.44,53.15z"/>
+   <path class="cls-1" d="m146.83,175.63l40.74,0l5.7,38.33l33.5,0l-33.62,-211.2l-48.59,0l-34,211.2l30.47,0l5.8,-38.33zm20.33,-135.48l15.91,106.85l-32,0l16.09,-106.85z"/>
+   <polygon class="cls-1" points="270.95 64.68 295.57 214.08 326.95 214.1 350.01 62.64 349.88 214.13 381.27 214.15 381.45 2.92 335.28 2.88 312.52 152.83 288.2 2.84 242.03 2.8 241.85 214.03 270.82 214.06 270.95 64.68"/>
+   <path class="cls-1" d="m453.38,216.93c32.59,0 49.51,-19.27 49.54,-53.07l0.13,-160.86l-31.38,0l-0.14,163c0,15.09 -6.65,20.52 -17.22,20.51s-17.19,-5.45 -17.18,-20.53l0.14,-163l-33.2,0l-0.13,160.84c-0.03,33.75 16.85,53.08 49.44,53.11z"/>
+   <polygon class="cls-1" points="555.21 61.3 596.42 214.33 630.52 214.36 630.7 3.13 601.12 3.1 601.02 129.54 567.03 3.07 525.38 3.04 525.2 214.27 555.08 214.3 555.21 61.3"/>
+   <path class="cls-1" d="m756.39,162.26l0.09,-106.82c0,-33.8 -16.25,-52.22 -49.44,-52.25l-52.51,0l-0.18,211.23l52.51,0.05c33.19,-0.02 49.5,-18.41 49.53,-52.21zm-68.82,22l0.13,-150.89l18.71,0c10.56,0 16.89,5.45 16.88,20.53l-0.09,109.84c0,15.09 -6.36,20.52 -16.92,20.51l-18.71,0.01z"/>
+   <path class="cls-1" d="m805,176.19l40.74,0l5.7,38.33l33.5,0l-33.66,-211.2l-48.58,0l-34,211.21l30.48,0l5.82,-38.34zm20.3,-135.48l15.9,106.84l-32,0l16.1,-106.84z"/>
+   <rect class="cls-1" height="55.96" width="884.71" x="0.19" y="247.31"/>
+  </symbol>
+ </defs>
+ <g class="layer">
+  <title>Layer 1</title>
+  <g fill="none" fill-rule="evenodd" id="svg_1">
+   <g fill-rule="nonzero" id="svg_2" transform="translate(8 8)">
+    <path d="m6.09,64l-6.09,-4.9l0,-32.31l30,11.88l-19.86,25.33l-4.05,0z" fill="url(#pluginsdk_80-a)" id="svg_3"/>
+    <path d="m20.95,64l31.32,-32.08l-14.6,-31.46l0.39,-0.46l25.94,0l0,64l-43.05,0z" fill="url(#pluginsdk_80-b)" id="svg_4"/>
+    <path d="m34.41,0l29.59,0l0,28.04l-14.99,15.96l-15.01,-43.55l0.41,-0.45z" fill="url(#pluginsdk_80-c)" id="svg_5"/>
+    <path d="m30.34,64l-30.34,0l0,-14.03l6.23,-20.69l-6.23,-2.12l0,-27.16l39.47,0l18.53,21.38l-27.46,42.55l-0.2,0.07z" fill="url(#pluginsdk_80-d)" id="svg_6"/>
+   </g>
+   <g fill-rule="nonzero" id="svg_7">
+    <rect fill="#000" height="56" id="svg_8" transform="matrix(1 0 0 1 0 0)" width="56" x="12" y="12"/>
+    <rect fill="#FFFEFE" height="4" id="svg_9" width="16.5" x="46.99" y="26.9"/>
+    <rect fill="#FFFEFE" height="4" id="svg_23" transform="matrix(6.12323e-17 1 -1 6.12323e-17 82.6544 -24.6116)" width="16.5" x="45.39" y="25.34"/>
+   </g>
+  </g>
+  <use id="svg_18" transform="matrix(1 0 0 1 0 0) matrix(0.374597 0 0 0.374597 -57.418 -1.90878)" x="190.52" xlink:href="#svg_17" y="43.2"/>
+  <use id="svg_22" transform="matrix(0.624369 0 0 0.624369 -144.645 -252.608)" x="255.1" xlink:href="#svg_20" y="454.72"/>
+ </g>
+</svg>

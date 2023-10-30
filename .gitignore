@@ -1,0 +1,9 @@
+/build/
+/.gradle/
+
+### IntelliJ IDEA ###
+/.idea/workspace.xml
+*.iws
+*.iml
+*.ipr
+out/
