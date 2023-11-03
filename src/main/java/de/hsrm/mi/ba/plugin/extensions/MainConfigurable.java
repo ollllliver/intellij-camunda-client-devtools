@@ -20,11 +20,9 @@ public class MainConfigurable implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
-        // Erstellen Sie die Swing-Komponenten
         JPanel mainPanel = new JPanel();
         JLabel infoLabel = new JLabel("Info: Dies ist die Konfigurationsseite des Camunda-Plugins.");
         mainPanel.add(infoLabel);
-
         return mainPanel;
     }
 

@@ -4,10 +4,10 @@
 <idea-plugin>
 
   <!-- Unique id for this plugin. Must stay constant for the life of the plugin. -->
-  <id>de.hsrm.mi.ba.plugin.example.plugin.settings</id>
+  <id>de.hsrm.mi.ba.intellij.camunda.client.devtool</id>
 
   <!-- Text to display as name on Settings | Plugin page -->
-  <name>SDK: Settings Example</name>
+  <name>Camunda Client Devtool</name>
 
   <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
        on how to target different products -->
@@ -17,20 +17,13 @@
   <!-- Text to display as description on Settings | Plugin page -->
   <description>
     <![CDATA[
-      Demonstrates implementing a custom settings panel.<br>Adds a settings panel to the <b>Settings</b>
-      panel under <b>Tools</b>.
+      Demonstrates implementing a custom camunda client development tool for intellij.<br>
+      Can be configures in <b>Settings</b> under <b>Camunda-Plugin</b>.
     ]]>
   </description>
-  <change-notes>
-    <![CDATA[
-      <ul>
-        <li><b>1.0</b> Initial SDK settings content release for 2020.1</li>
-      </ul>
-    ]]>
-  </change-notes>
 
   <!-- Text to display as company information on Settings | Plugin page -->
-  <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
+  <vendor url="https://github.com/ollllliver/intellij-camunda-client-devtools">GitHub: ollllliver/intellij-camunda-client-devtools</vendor>
 
   <extensions defaultExtensionNs="com.intellij">
     <applicationConfigurable
@@ -39,6 +32,13 @@
             instance="de.hsrm.mi.ba.plugin.extensions.MainConfigurable"
             id="camunda.plugin.configuration">
     </applicationConfigurable>
+    <applicationConfigurable
+            parentId="camunda.plugin.configuration"
+            displayName="Templates"
+            instance="de.hsrm.mi.ba.plugin.extensions.template.TemplateSettingsConfigurable"
+            id="camunda.plugin.configuration.templates.TemplateSettingsConfigurable">
+    </applicationConfigurable>
+    <applicationService  serviceImplementation="de.hsrm.mi.ba.plugin.extensions.template.model.TemplateSettingsState"/>
   </extensions>
 
   <actions>
