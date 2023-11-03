@@ -32,12 +32,11 @@ public class TemplateSettingsComponent {
             }
         });
 
-        // JBSplitter erstellen und Liste hinzufüge
+        // JBSplitter erstellen und Liste und Template Detail Ansicht hinzufüge
         jbSplitter = new JBSplitter(false, 0.3f);
         jbSplitter.setFirstComponent(new TemplateListComponent(controller, myTemplatesList));
-        jbSplitter.setSecondComponent(new DetailedTemplateSettingsComponent()); // Zweite Komponente leer lassen
+        jbSplitter.setSecondComponent(new DetailedTemplateSettingsComponent(controller));
 
-        // Füge die Liste und das InfoLabel zum Hauptpanel hinzu
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(jbSplitter, BorderLayout.CENTER);
     }
@@ -57,6 +56,10 @@ public class TemplateSettingsComponent {
 
     public void selectElementAtIndex(int index) {
         myTemplatesList.setSelectedIndex(index);
+    }
+
+    public int getSelectedTemplateIndex() {
+        return myTemplatesList.getSelectedIndex();
     }
 
 }

@@ -68,8 +68,14 @@ public class TemplateSettingsConfigurable implements Configurable {
     public void showDetailedTemplateSettingsOf(Template template) {
         JBSplitter jbSplitter = templateSettingsComponent.getJbSplitter();
         if (jbSplitter.getSecondComponent() == null) {
-            jbSplitter.setSecondComponent(new DetailedTemplateSettingsComponent());
+            jbSplitter.setSecondComponent(new DetailedTemplateSettingsComponent(this));
         }
         ((DetailedTemplateSettingsComponent) jbSplitter.getSecondComponent()).setTemplate(template);
+    }
+
+    public void changeName(String name) {
+        int selectedTemplateIndex = templateSettingsComponent.getSelectedTemplateIndex();
+        Template template = new Template(name, templatesModel.get(selectedTemplateIndex).getTemplateText());
+        templatesModel.set(selectedTemplateIndex, template);
     }
 }
