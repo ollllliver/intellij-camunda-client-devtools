@@ -5,11 +5,11 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.util.xmlb.XmlSerializerUtil;
+import org.apache.commons.lang3.SerializationUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 @State(
@@ -38,10 +38,15 @@ public class TemplateSettingsState implements PersistentStateComponent<TemplateS
         XmlSerializerUtil.copyBean(state, this);
     }
 
+    /**
+     * @return a DefaultListModel<Template> with deep copied Objects, so you don't change the State by changing this listModel.
+     *
+     * To change State, pls use setTemplates() methode.
+     */
     public DefaultListModel<Template> getTemplates() {
         DefaultListModel<Template> templatesModel = new DefaultListModel<>();
         for (Template template : templates) {
-            templatesModel.addElement(template);
+            templatesModel.addElement(SerializationUtils.clone(template));
         }
         return templatesModel;
     }
