@@ -1,5 +1,6 @@
 package de.hsrm.mi.ba.plugin.extensions.template.ui.components;
 
+import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.DocumentAdapter;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.ToolbarDecorator;
@@ -8,6 +9,7 @@ import com.intellij.ui.table.JBTable;
 import com.intellij.util.ui.JBUI;
 import de.hsrm.mi.ba.plugin.extensions.template.TemplateSettingsConfigurable;
 import de.hsrm.mi.ba.plugin.extensions.template.model.Template;
+import de.hsrm.mi.ba.plugin.extensions.template.model.VarType;
 import de.hsrm.mi.ba.plugin.extensions.template.model.Variable;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,6 +17,7 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.Arrays;
 
 public class DetailedTemplateSettingsComponent extends JPanel {
 
@@ -25,14 +28,16 @@ public class DetailedTemplateSettingsComponent extends JPanel {
 
     public DetailedTemplateSettingsComponent(TemplateSettingsConfigurable controller) {
 
-        Template selectedTemplate = controller.getTemplatesModel().get(0);
-
-        templateName.setText(selectedTemplate.getName());
-        templateText.setText(selectedTemplate.getTemplateText());
-
-        for (Variable var : selectedTemplate.getVariables()) {
-            tableModel.addRow(new String[]{var.getName(), var.getTyp().toString(), var.getDescription()});
+        DefaultListModel<Template> templatesModel = controller.getTemplatesModel();
+        if (!templatesModel.isEmpty()) {
+            Template selectedTemplate = templatesModel.get(0);
+            setTemplate(selectedTemplate);
         }
+
+//        Dropdown for Variable Types
+        String[] dropdownOptions = Arrays.stream(VarType.values()).map(VarType::toString).toArray(String[]::new);
+        DefaultCellEditor editor = new DefaultCellEditor(new ComboBox<>(dropdownOptions));
+        table.getColumnModel().getColumn(1).setCellEditor(editor);
 
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(table)
                 .setScrollPaneBorder(JBUI.Borders.empty())
@@ -81,9 +86,8 @@ public class DetailedTemplateSettingsComponent extends JPanel {
         for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
             tableModel.removeRow(i);
         }
-        for (Variable var :
-                template.getVariables()) {
-            tableModel.addRow(new String[]{var.getName(), var.getTyp().toString(), var.getDescription()});
+        for (Variable var : template.getVariables()) {
+            tableModel.addRow(new String[]{var.getName(), var.getType().toString(), var.getDescription()});
         }
     }
 

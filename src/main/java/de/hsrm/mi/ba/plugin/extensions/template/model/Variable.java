@@ -4,24 +4,17 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Variable implements Serializable {
-    private String name;
-    private String description;
-    private Enum<VarTyp> typ;
+    private String name = "";
+    private Enum<VarType> type = VarType.STRING;
+    private String description = "";
 
     public Variable() {
-//        leerer Konstruktor, damit es serializable ist
-        typ = VarTyp.STRING;
     }
 
-    public Variable(String name, String description) {
+    public Variable(String name, Enum<VarType> type, String description) {
         this.name = name;
+        this.type = type;
         this.description = description;
-        this.typ = VarTyp.STRING;
-    }
-
-    public Variable(String s) {
-        name = s;
-        typ = VarTyp.STRING;
     }
 
     public String getName() {
@@ -40,12 +33,12 @@ public class Variable implements Serializable {
         this.description = description;
     }
 
-    public Enum<VarTyp> getTyp() {
-        return typ;
+    public Enum<VarType> getType() {
+        return type;
     }
 
-    public void setTyp(Enum<VarTyp> typ) {
-        this.typ = typ;
+    public void setType(Enum<VarType> type) {
+        this.type = type;
     }
 
     @Override
@@ -53,11 +46,11 @@ public class Variable implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Variable variable = (Variable) o;
-        return Objects.equals(name, variable.name) && Objects.equals(description, variable.description) && Objects.equals(typ, variable.typ);
+        return Objects.equals(name, variable.name) && Objects.equals(type, variable.type) && Objects.equals(description, variable.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, typ);
+        return Objects.hash(name, type, description);
     }
 }

@@ -2,16 +2,16 @@ package de.hsrm.mi.ba.plugin.extensions.template;
 
 import com.intellij.openapi.options.Configurable;
 import com.intellij.ui.JBSplitter;
-import de.hsrm.mi.ba.plugin.extensions.template.model.Template;
+ import de.hsrm.mi.ba.plugin.extensions.template.model.Template;
 import de.hsrm.mi.ba.plugin.extensions.template.model.TemplateSettingsState;
 import de.hsrm.mi.ba.plugin.extensions.template.model.Variable;
-import de.hsrm.mi.ba.plugin.extensions.template.model.VariablesTableModel;
 import de.hsrm.mi.ba.plugin.extensions.template.ui.TemplateSettingsComponent;
 import de.hsrm.mi.ba.plugin.extensions.template.ui.components.DetailedTemplateSettingsComponent;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TemplateSettingsConfigurable implements Configurable {
@@ -121,19 +121,16 @@ public class TemplateSettingsConfigurable implements Configurable {
 
 //    ##################################################################################################################
 
-    private void updateTemplate(int index, String name, VariablesTableModel variables, String text) {
+    private void updateTemplate(int index, String name, ArrayList<Variable> variables, String text) {
         int selectedTemplateIndex = templateSettingsComponent.getTemplateListComponent().getSelectedTemplateIndex();
-        Template template = new Template();
-        template.setName(name);
-        template.setVariables(variables);
-        template.setTemplateText(text);
+        Template template = new Template(name, variables, text);
         templatesModel.set(selectedTemplateIndex, template);
 
     }
 
     public void showDetailedTemplateSettingsOf(int index) {
         JBSplitter jbSplitter = templateSettingsComponent.getJbSplitter();
-        if (jbSplitter.getSecondComponent() == null) {
+        if (jbSplitter.getSecondComponent() == null) { // TODO nicht auf null vergleichen sondern ob es hidden ist
             jbSplitter.setSecondComponent(new DetailedTemplateSettingsComponent(this));
         }
         ((DetailedTemplateSettingsComponent) jbSplitter.getSecondComponent()).setTemplate(templatesModel.get(index));
