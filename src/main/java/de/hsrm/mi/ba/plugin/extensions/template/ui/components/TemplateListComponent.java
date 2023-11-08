@@ -7,6 +7,7 @@ import com.intellij.ui.components.JBList;
 import com.intellij.util.ui.JBUI;
 import de.hsrm.mi.ba.plugin.extensions.template.TemplateSettingsConfigurable;
 import de.hsrm.mi.ba.plugin.extensions.template.model.Template;
+import de.hsrm.mi.ba.plugin.extensions.template.model.TemplateSettingsState;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -16,7 +17,10 @@ public class TemplateListComponent extends JPanel{
     private final JBList<Template> myTemplatesList = new JBList<>();
 
     public TemplateListComponent(TemplateSettingsConfigurable controller) {
-        setTemplates(controller.getTemplatesModel());
+        myTemplatesList.setModel(controller.getTemplatesModel());
+        try {
+            myTemplatesList.setSelectedIndex(TemplateSettingsState.getInstance().getSelectedTemplateIndex());
+        } catch (ArrayIndexOutOfBoundsException ignored) {}
         myTemplatesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         myTemplatesList.setCellRenderer(new SimpleListCellRenderer<>() {
 
@@ -27,7 +31,7 @@ public class TemplateListComponent extends JPanel{
         });
         myTemplatesList.addListSelectionListener(e -> {
             if (!myTemplatesList.isSelectionEmpty()) {
-                controller.showDetailedTemplateSettingsOf(myTemplatesList.getSelectedIndex());
+                controller.updateDetailedTemplateSettingsComponent(myTemplatesList.getSelectedIndex());
             }
         });
 
@@ -44,7 +48,10 @@ public class TemplateListComponent extends JPanel{
 
     public void setTemplates(DefaultListModel<Template> templatesModel) {
         myTemplatesList.setModel(templatesModel);
-        myTemplatesList.setSelectedIndex(0);
+        try {
+            myTemplatesList.setSelectedIndex(TemplateSettingsState.getInstance().getSelectedTemplateIndex());
+        } catch (ArrayIndexOutOfBoundsException ignored) {
+        }
     }
 
     public void selectElementAtIndex(int index) {

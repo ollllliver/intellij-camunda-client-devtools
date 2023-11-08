@@ -1,6 +1,8 @@
 package de.hsrm.mi.ba.plugin.extensions.template.model;
 
-public enum VarType {
+import java.io.Serializable;
+
+public enum VarType implements Serializable {
     STRING,
     CLASS,
     SERVICE_TASK

@@ -14,8 +14,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 @State(
-        name = "de.hsrm.mi.ba.plugin.extensions.template.iuztfeedvddssffg",
-        storages = @Storage("ipuhgtdds.xml")
+        name = "de.hsrm.mi.ba.plugin.extensions.template.TemplateSettingsState",
+        storages = @Storage("templateSettingsState.xml")
 )
 public class TemplateSettingsState implements PersistentStateComponent<TemplateSettingsState> {
 
@@ -23,7 +23,8 @@ public class TemplateSettingsState implements PersistentStateComponent<TemplateS
 //    Hier drinnen wird es aber als ArrayList behandelt, damit es als ein serialisierbares Objekt von der IntelliJ API persistable ist
 
     @OptionTag(converter = TemplateSettingsStateConverter.class)
-    public ArrayList<Template> templates = new ArrayList<>();
+    private ArrayList<Template> templates = new ArrayList<>();
+    private int selectedTemplateIndex = -1;
 
     public static TemplateSettingsState getInstance() {
         return ApplicationManager.getApplication().getService(TemplateSettingsState.class);
@@ -53,11 +54,30 @@ public class TemplateSettingsState implements PersistentStateComponent<TemplateS
         return templatesModel;
     }
 
+    /**
+     * @param templates that should be persisted
+     *
+     * makes a deepCopy before setting the Templates for the state, so the passed templates don't change the state accidentally
+     */
     public void setTemplates(DefaultListModel<Template> templates) {
         ArrayList<Template> arrayList = new ArrayList<>();
         for (int i = 0; i < templates.size(); i++) {
-            arrayList.add(templates.get(i));
+            arrayList.add(SerializationUtils.clone(templates.get(i)));
         }
         this.templates = arrayList;
+    }
+
+    /**
+     * @return index of selectedTemplateIndex. Should be used to save index of last selected Template.
+     */
+    public int getSelectedTemplateIndex() {
+        return selectedTemplateIndex;
+    }
+
+    /**
+     * @param selectedTemplateIndex should be used to save index of last selected Template.
+     */
+    public void setSelectedTemplateIndex(int selectedTemplateIndex) {
+        this.selectedTemplateIndex = selectedTemplateIndex;
     }
 }

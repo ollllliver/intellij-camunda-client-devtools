@@ -2,8 +2,9 @@ package de.hsrm.mi.ba.plugin.extensions.template;
 
 import com.intellij.openapi.options.Configurable;
 import com.intellij.ui.JBSplitter;
- import de.hsrm.mi.ba.plugin.extensions.template.model.Template;
+import de.hsrm.mi.ba.plugin.extensions.template.model.Template;
 import de.hsrm.mi.ba.plugin.extensions.template.model.TemplateSettingsState;
+import de.hsrm.mi.ba.plugin.extensions.template.model.VarType;
 import de.hsrm.mi.ba.plugin.extensions.template.model.Variable;
 import de.hsrm.mi.ba.plugin.extensions.template.ui.TemplateSettingsComponent;
 import de.hsrm.mi.ba.plugin.extensions.template.ui.components.DetailedTemplateSettingsComponent;
@@ -11,7 +12,6 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TemplateSettingsConfigurable implements Configurable {
@@ -84,16 +84,18 @@ public class TemplateSettingsConfigurable implements Configurable {
 
     public void changeName(String name) {
         int selectedTemplateIndex = templateSettingsComponent.getTemplateListComponent().getSelectedTemplateIndex();
-        updateTemplate(selectedTemplateIndex, name,
-                templatesModel.get(selectedTemplateIndex).getVariables(),
-                templatesModel.get(selectedTemplateIndex).getTemplateText());
+        Template selectedTemplate = templatesModel.get(selectedTemplateIndex);
+        Template template = new Template(name, selectedTemplate.getVariables(), selectedTemplate.getTemplateText());
+        templatesModel.set(selectedTemplateIndex, template);
     }
 
     public void addVariable() {
         int selectedTemplateIndex = templateSettingsComponent.getTemplateListComponent().getSelectedTemplateIndex();
         Template template = templatesModel.get(selectedTemplateIndex);
         template.getVariables().add(new Variable());
-        showDetailedTemplateSettingsOf(selectedTemplateIndex);
+        updateDetailedTemplateSettingsComponent(selectedTemplateIndex);
+//        TODO: gibt's einen Weg, die Tabelle von Variablen an die ModelDaten zu knüpfen?
+//        Ja, dafür muss aber das Model aus der Component gezogen werden(siehe das to-do in der component)
     }
 
     public void removeVariable() {
@@ -101,15 +103,28 @@ public class TemplateSettingsConfigurable implements Configurable {
         int selectedVariableIndex = templateSettingsComponent.getDetailedTemplateSettingsComponent().getSelectedVariableIndex();
         Template template = templatesModel.get(selectedTemplateIndex);
         template.getVariables().remove(selectedVariableIndex);
-        showDetailedTemplateSettingsOf(selectedTemplateIndex);
+        updateDetailedTemplateSettingsComponent(selectedTemplateIndex);
+//        TODO: gibt's einen Weg, die Tabelle von Variablen an die ModelDaten zu knüpfen?
+//        Ja, dafür muss aber das Model aus der Component gezogen werden(siehe das to-do in der component)
     }
 
-    public void editVariable() {
-//        TODO: In UI geänderte Variable in templatesModel einpflegen
-//        int selectedTemplateIndex = templateSettingsComponent.getTemplateListComponent().getSelectedTemplateIndex();
-//        Template template = templatesModel.get(selectedTemplateIndex);
-//        template.getVariables() #- EDIT -#; <-- Aus UI daten holen
-//        showDetailedTemplateSettingsOf(selectedTemplateIndex);
+    public void editVariable(int selectedRow, int selectedColumn, String newValue) {
+        int selectedTemplateIndex = templateSettingsComponent.getTemplateListComponent().getSelectedTemplateIndex();
+        Template template = templatesModel.get(selectedTemplateIndex);
+        switch (selectedColumn){
+            case 0:
+                template.getVariables().get(selectedRow).setName(newValue);
+                System.out.println("setting name to " + newValue);
+                break;
+            case 1:
+                template.getVariables().get(selectedRow).setType(VarType.valueOf(newValue));
+                System.out.println("setting type to " + newValue);
+                break;
+            case 2:
+                template.getVariables().get(selectedRow).setDescription(newValue);
+                System.out.println("setting description to " + newValue);
+                break;
+        }
     }
 
     public void changeTemplateText(String templateText) {
@@ -121,19 +136,15 @@ public class TemplateSettingsConfigurable implements Configurable {
 
 //    ##################################################################################################################
 
-    private void updateTemplate(int index, String name, ArrayList<Variable> variables, String text) {
-        int selectedTemplateIndex = templateSettingsComponent.getTemplateListComponent().getSelectedTemplateIndex();
-        Template template = new Template(name, variables, text);
-        templatesModel.set(selectedTemplateIndex, template);
-
-    }
-
-    public void showDetailedTemplateSettingsOf(int index) {
+    public void updateDetailedTemplateSettingsComponent(int index) {
+        TemplateSettingsState.getInstance().setSelectedTemplateIndex(index);
         JBSplitter jbSplitter = templateSettingsComponent.getJbSplitter();
-        if (jbSplitter.getSecondComponent() == null) { // TODO nicht auf null vergleichen sondern ob es hidden ist
-            jbSplitter.setSecondComponent(new DetailedTemplateSettingsComponent(this));
+        DetailedTemplateSettingsComponent detailedTemplateSettingsComponent = (DetailedTemplateSettingsComponent) jbSplitter.getSecondComponent();
+        if (detailedTemplateSettingsComponent.getComponentVisibility()) {
+            detailedTemplateSettingsComponent.setComponentVisibility(true);
         }
-        ((DetailedTemplateSettingsComponent) jbSplitter.getSecondComponent()).setTemplate(templatesModel.get(index));
+        detailedTemplateSettingsComponent.removeEditor();
+        detailedTemplateSettingsComponent.setTemplate(templatesModel.get(index));
     }
 
     public DefaultListModel<Template> getTemplatesModel() {
