@@ -46,7 +46,7 @@ public class DetailedTemplateSettingsComponent extends JPanel {
         }
 
         DefaultCellEditor comboBoxCellEditor = createComboBoxCellEditor(controller);
-        DefaultCellEditor textFieldCellEditor = createTextfieldCellEditor(controller);
+        DefaultCellEditor textFieldCellEditor = createTextFieldCellEditor(controller);
 
         table.getColumnModel().getColumn(0).setCellEditor(textFieldCellEditor);
         table.getColumnModel().getColumn(1).setCellEditor(comboBoxCellEditor);
@@ -80,6 +80,13 @@ public class DetailedTemplateSettingsComponent extends JPanel {
         labeledTextField.add(templateName);
 
         add(labeledTextField, gbc);
+
+        templateText.getDocument().addDocumentListener(new DocumentAdapter() {
+            @Override
+            protected void textChanged(@NotNull DocumentEvent documentEvent) {
+                controller.changeTemplateText(templateText.getText());
+            }
+        });
 
         gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
@@ -125,7 +132,7 @@ public class DetailedTemplateSettingsComponent extends JPanel {
     }
 
     @NotNull
-    private DefaultCellEditor createTextfieldCellEditor(TemplateSettingsConfigurable controller) {
+    private DefaultCellEditor createTextFieldCellEditor(TemplateSettingsConfigurable controller) {
         DefaultCellEditor textFieldCellEditor = new DefaultCellEditor(new JBTextField());
         textFieldCellEditor.addCellEditorListener(new CellEditorListener() {
             @Override

@@ -52,6 +52,8 @@ public class TemplateSettingsConfigurable implements Configurable {
     }
 
 //    ##################################################################################################################
+//    ########################################## Operations ############################################################
+//    ##################################################################################################################
 
     /**
      * Adding new Template to Model by popup window for entering the new Template name.
@@ -114,24 +116,21 @@ public class TemplateSettingsConfigurable implements Configurable {
         switch (selectedColumn){
             case 0:
                 template.getVariables().get(selectedRow).setName(newValue);
-                System.out.println("setting name to " + newValue);
                 break;
             case 1:
                 template.getVariables().get(selectedRow).setType(VarType.valueOf(newValue));
-                System.out.println("setting type to " + newValue);
                 break;
             case 2:
                 template.getVariables().get(selectedRow).setDescription(newValue);
-                System.out.println("setting description to " + newValue);
                 break;
         }
     }
 
     public void changeTemplateText(String templateText) {
-//        TODO: In UI geänderten TemplateText in templatesModel einpflegen
-//        int selectedTemplateIndex = templateSettingsComponent.getTemplateListComponent().getSelectedTemplateIndex();
-//        updateTemplate(selectedTemplateIndex, templatesModel.get(selectedTemplateIndex).getName(),
-//                templatesModel.get(selectedTemplateIndex).getVariables(), templateText);
+        int selectedTemplateIndex = templateSettingsComponent.getTemplateListComponent().getSelectedTemplateIndex();
+        Template selectedTemplate = templatesModel.get(selectedTemplateIndex);
+        Template template = new Template(selectedTemplate.getName(), selectedTemplate.getVariables(), templateText);
+        templatesModel.set(selectedTemplateIndex, template);
     }
 
 //    ##################################################################################################################

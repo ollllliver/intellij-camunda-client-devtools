@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Template implements Serializable {
     private String name;
     private ArrayList<Variable> variables = new ArrayList<>();
-    private String templateText;
+    private String templateText = "";
 
     public Template() {
     }
