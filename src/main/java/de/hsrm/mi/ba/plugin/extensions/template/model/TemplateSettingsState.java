@@ -46,10 +46,10 @@ public class TemplateSettingsState implements PersistentStateComponent<TemplateS
      *
      * To change State, pls use setTemplates() methode.
      */
-    public DefaultListModel<Template> getTemplates() {
-        DefaultListModel<Template> templatesModel = new DefaultListModel<>();
+    public ArrayList<Template> getTemplates() {
+        ArrayList<Template> templatesModel = new ArrayList<>();
         for (Template template : templates) {
-            templatesModel.addElement(SerializationUtils.clone(template));
+            templatesModel.add(SerializationUtils.clone(template));
         }
         return templatesModel;
     }
@@ -59,10 +59,10 @@ public class TemplateSettingsState implements PersistentStateComponent<TemplateS
      *
      * makes a deepCopy before setting the Templates for the state, so the passed templates don't change the state accidentally
      */
-    public void setTemplates(DefaultListModel<Template> templates) {
+    public void setTemplates(ArrayList<Template> templates) {
         ArrayList<Template> arrayList = new ArrayList<>();
-        for (int i = 0; i < templates.size(); i++) {
-            arrayList.add(SerializationUtils.clone(templates.get(i)));
+        for (Template template : templates) {
+            arrayList.add(SerializationUtils.clone(template));
         }
         this.templates = arrayList;
     }

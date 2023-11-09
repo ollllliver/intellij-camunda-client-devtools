@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TemplateSettingsConfigurable implements Configurable {
@@ -28,7 +29,7 @@ public class TemplateSettingsConfigurable implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
-        templatesModel = TemplateSettingsState.getInstance().getTemplates();
+        templatesModel = arrayList2defaultListModel(TemplateSettingsState.getInstance().getTemplates());
         templateSettingsComponent = new TemplateSettingsComponent(this);
         return templateSettingsComponent.getPanel();
     }
@@ -42,12 +43,12 @@ public class TemplateSettingsConfigurable implements Configurable {
     @Override
     public void apply() {
         TemplateSettingsState templateSettingsState = TemplateSettingsState.getInstance();
-        templateSettingsState.setTemplates(templatesModel);
+        templateSettingsState.setTemplates(defaultListModel2arrayList(templatesModel));
     }
 
     @Override
     public void reset() {
-        templatesModel = TemplateSettingsState.getInstance().getTemplates();
+        templatesModel = arrayList2defaultListModel(TemplateSettingsState.getInstance().getTemplates());
         templateSettingsComponent.getTemplateListComponent().setTemplates(templatesModel);
     }
 
@@ -147,6 +148,22 @@ public class TemplateSettingsConfigurable implements Configurable {
     }
 
     public DefaultListModel<Template> getTemplatesModel() {
+        return templatesModel;
+    }
+
+    private ArrayList<Template> defaultListModel2arrayList(DefaultListModel<Template> templates) {
+        ArrayList<Template> arrayList = new ArrayList<>();
+        for (int i = 0; i < templates.size(); i++) {
+            arrayList.add(templates.get(i));
+        }
+        return (arrayList);
+    }
+
+    public DefaultListModel<Template> arrayList2defaultListModel(ArrayList<Template> templates) {
+        DefaultListModel<Template> templatesModel = new DefaultListModel<>();
+        for (Template template : templates) {
+            templatesModel.addElement(template);
+        }
         return templatesModel;
     }
 }

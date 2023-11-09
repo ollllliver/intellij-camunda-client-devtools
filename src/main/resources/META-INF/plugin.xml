@@ -42,6 +42,11 @@
   </extensions>
 
   <actions>
+    <action id="de.hsrm.mi.ba.plugin.actions.MyGeneratorAction" class="de.hsrm.mi.ba.plugin.actions.generator.MyGeneratorAction"
+            text="Camunda Templates" description="Generates something.">
+      <add-to-group group-id="GenerateGroup" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl G"/>
+    </action>
   </actions>
 
 </idea-plugin>
