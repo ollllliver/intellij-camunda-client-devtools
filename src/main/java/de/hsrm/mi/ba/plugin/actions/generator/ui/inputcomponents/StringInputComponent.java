@@ -1,19 +1,11 @@
 package de.hsrm.mi.ba.plugin.actions.generator.ui.inputcomponents;
 
 import com.intellij.ui.components.JBTextField;
-import de.hsrm.mi.ba.plugin.extensions.template.model.Variable;
 
-public class StringInputComponent extends InputComponent  {
-    private final JBTextField textField = new JBTextField();
-
-
-    public StringInputComponent(Variable var) {
-        super(var);
-        add(textField);
-    }
+public class StringInputComponent extends JBTextField implements InputComponentInterface {
 
     @Override
     public String getInputValue() {
-        return textField.getText();
+        return getText();
     }
 }

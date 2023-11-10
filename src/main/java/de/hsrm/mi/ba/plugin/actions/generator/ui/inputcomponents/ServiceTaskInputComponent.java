@@ -1,20 +1,17 @@
 package de.hsrm.mi.ba.plugin.actions.generator.ui.inputcomponents;
 
 import com.intellij.openapi.ui.ComboBox;
-import de.hsrm.mi.ba.plugin.extensions.template.model.Variable;
 
-public class ServiceTaskInputComponent extends InputComponent {
-    private final ComboBox<String> comboBox;
-    private final String[] options = {"Option 1", "Option 2", "Option 3"};
+public class ServiceTaskInputComponent extends ComboBox<String> implements InputComponentInterface {
+    private final String[] options;
 
-    public ServiceTaskInputComponent(Variable var) {
-        super(var);
-        comboBox = new ComboBox<>(options);
-        add(comboBox);
+    public ServiceTaskInputComponent(String[] options) {
+        super(options);
+        this.options = options;
     }
 
     @Override
     public String getInputValue() {
-        return options[comboBox.getSelectedIndex()];
+        return options[getSelectedIndex()];
     }
 }
