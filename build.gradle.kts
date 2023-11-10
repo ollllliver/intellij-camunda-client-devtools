@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "de.hsrm.mi.ba"
-version = "2.0.0"
+version = "1.0.0"
 
 repositories {
   mavenCentral()
@@ -20,6 +20,11 @@ java {
 intellij {
   version.set("2021.2.4")
   plugins.set(listOf("com.intellij.java"))
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/com.hubspot.jinjava/jinjava
+  implementation("com.hubspot.jinjava:jinjava:2.7.1")
 }
 
 tasks {
