@@ -1,10 +1,13 @@
 package de.hsrm.mi.ba.plugin.actions.generator;
 
 import com.hubspot.jinjava.Jinjava;
+import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.command.WriteCommandAction;
+import com.intellij.openapi.editor.Document;
+import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.ui.popup.PopupStep;
@@ -15,6 +18,7 @@ import de.hsrm.mi.ba.plugin.actions.generator.ui.CodeGenerationDialog;
 import de.hsrm.mi.ba.plugin.extensions.template.model.Template;
 import de.hsrm.mi.ba.plugin.extensions.template.model.TemplateSettingsState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +40,12 @@ public class MyGeneratorAction extends AnAction {
             public Runnable getFinalRunnable() {
                 return () -> {
                     Project project = anActionEvent.getProject();
+                    Editor editor = anActionEvent.getData(LangDataKeys.EDITOR);
+                    if (editor == null) {
+                        return;
+                    }
                     PsiFile psiFile = anActionEvent.getData(LangDataKeys.PSI_FILE);
+                    Document document = editor.getDocument();
                     if (project == null || psiFile == null) {
                         return;
                     }
@@ -60,21 +69,13 @@ public class MyGeneratorAction extends AnAction {
                             .collect(HashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue().get()), Map::putAll);
                     String generatedText = jinjava.render(template.getTemplateText(), stringMap);
 
-//                    WriteCommandAction.runWriteCommandAction(project, () -> {
-//                        PsiClass psiClass = getTargetClass(psiFile);
-//
-//                        if (psiClass != null) {
-//                            PsiElementFactory elementFactory = JavaPsiFacade.getElementFactory(project);
-//                              TODO: man braucht noch einen Kontext, was das Template ist. Ob es ein Kommentar ist oder eine Methode oder Klasse etc.
-//                            PsiComment generatedMethod = elementFactory.createCommentFromText(generatedText, psiClass);
-//
-//                            PsiElement lastMethod = psiClass.getMethods()[psiClass.getMethods().length - 1];
-//                            psiClass.addAfter(generatedMethod, lastMethod);
-//                            CodeStyleManager.getInstance(project).reformat(psiClass);
-//                        }
-//                    });
-
-                    System.out.println(generatedText);
+                    WriteCommandAction.runWriteCommandAction(project, () -> {
+                        int offset = editor.getCaretModel().getOffset();
+                        int endOffset = offset + generatedText.length();
+                        document.insertString(offset, generatedText);
+                        PsiDocumentManager.getInstance(project).commitDocument(document);
+                        CodeStyleManager.getInstance(project).reformatRange(psiFile, offset, endOffset);
+                    });
                 };
             }
 
