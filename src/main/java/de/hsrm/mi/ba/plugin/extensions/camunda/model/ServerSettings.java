@@ -6,13 +6,13 @@ import java.util.Objects;
 public class ServerSettings implements Serializable {
 
     private boolean activated = false;
-    private boolean ssl;
-    private String host;
-    private int port = 8080;
-    private boolean auth;
-    private String user;
-    private String password;
-
+    private boolean ssl = false;
+    private String host = "localhost";
+    private int port = 8081;
+    private boolean auth = false;
+    private String user = "";
+    private String password = "";
+    private CamundaService service = CamundaService.OPERATE;
 
     public boolean isActivated() {
         return activated;
@@ -70,16 +70,24 @@ public class ServerSettings implements Serializable {
         this.password = password;
     }
 
+    public CamundaService getService() {
+        return service;
+    }
+
+    public void setService(CamundaService service) {
+        this.service = service;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ServerSettings that = (ServerSettings) o;
-        return ssl == that.ssl && port == that.port && Objects.equals(host, that.host);
+        return activated == that.activated && ssl == that.ssl && port == that.port && auth == that.auth && Objects.equals(host, that.host) && Objects.equals(user, that.user) && Objects.equals(password, that.password) && service == that.service;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ssl, host, port);
+        return Objects.hash(activated, ssl, host, port, auth, user, password, service);
     }
 }

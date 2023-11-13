@@ -13,7 +13,6 @@ import org.jetbrains.annotations.Nullable;
         name = "de.hsrm.mi.ba.plugin.extensions.template.ServerSettingsState",
         storages = @Storage("serverSettingsState.xml")
 )
-
 public class ServerSettingsState implements PersistentStateComponent<ServerSettingsState> {
 
     private ServerSettings settings = new ServerSettings();

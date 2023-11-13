@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="de.hsrm.mi.ba.plugin.extensions.camunda.ui.ServerSettingsComponent">
-  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="413" height="328"/>
+      <xy x="20" y="20" width="413" height="455"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
       <component id="d9ca5" class="com.intellij.ui.components.JBCheckBox" binding="activatedCheckBox">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <selected value="false"/>
@@ -20,48 +20,25 @@
       <grid id="ec9b5" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="10" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="e1584" class="com.intellij.ui.components.JBCheckBox" binding="sslCheckBox">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <enabled value="false"/>
-              <text value="SSL"/>
-            </properties>
-          </component>
-          <vspacer id="f9478">
-            <constraints>
-              <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <component id="156f2" class="javax.swing.JLabel" binding="hostLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <enabled value="false"/>
-              <text value="Host"/>
-            </properties>
-          </component>
           <component id="b316e" class="com.intellij.ui.components.JBTextField" binding="hostTextField">
             <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <editable value="true"/>
-              <enabled value="false"/>
+              <editable value="false"/>
+              <enabled value="true"/>
             </properties>
           </component>
           <component id="c10a6" class="com.intellij.ui.PortField" binding="portField">
             <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <enabled value="false"/>
@@ -71,7 +48,7 @@
           <grid id="d756e" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="10" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false"/>
+              <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false"/>
             </constraints>
             <properties/>
             <border type="none"/>
@@ -92,8 +69,8 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <editable value="true"/>
-                  <enabled value="false"/>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                 </properties>
               </component>
               <component id="b0939" class="javax.swing.JLabel" binding="passwordLabel">
@@ -112,15 +89,15 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <editable value="true"/>
-                  <enabled value="false"/>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                 </properties>
               </component>
             </children>
           </grid>
           <component id="d5111" class="com.intellij.ui.components.JBCheckBox" binding="authCheckBox">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <enabled value="false"/>
@@ -129,15 +106,69 @@
           </component>
           <component id="ae95f" class="javax.swing.JLabel" binding="poetLabel">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <enabled value="false"/>
               <text value="Port"/>
             </properties>
           </component>
+          <component id="156f2" class="javax.swing.JLabel" binding="hostLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="false"/>
+              <text value="Host"/>
+            </properties>
+          </component>
+          <component id="e1584" class="com.intellij.ui.components.JBCheckBox" binding="sslCheckBox">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="false"/>
+              <text value="SSL"/>
+            </properties>
+          </component>
+          <component id="f75f8" class="com.intellij.openapi.ui.ComboBox" binding="serviceComboBox">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <enabled value="false"/>
+            </properties>
+          </component>
+          <component id="fac48" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="false"/>
+              <text value="Service"/>
+            </properties>
+          </component>
         </children>
       </grid>
+      <component id="f065" class="javax.swing.JButton" binding="checkConnectionButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Check connection"/>
+        </properties>
+      </component>
+      <vspacer id="f9478">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="5fbcc">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
     </children>
   </grid>
 </form>
