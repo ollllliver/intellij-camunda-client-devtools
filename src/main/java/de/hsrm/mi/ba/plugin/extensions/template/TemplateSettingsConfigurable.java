@@ -23,7 +23,7 @@ public class TemplateSettingsConfigurable implements Configurable {
     @Nls
     @Override
     public String getDisplayName() {
-        return "My Plugin Configuration";
+        return "Template Configuration";
     }
 
     @Nullable

@@ -39,6 +39,13 @@
             id="camunda.plugin.configuration.templates.TemplateSettingsConfigurable">
     </applicationConfigurable>
     <applicationService  serviceImplementation="de.hsrm.mi.ba.plugin.extensions.template.model.TemplateSettingsState"/>
+    <applicationConfigurable
+            parentId="camunda.plugin.configuration"
+            displayName="Server"
+            instance="de.hsrm.mi.ba.plugin.extensions.camunda.ServerSettingsConfigurable"
+            id="camunda.plugin.configuration.camunda.ServerSettingsConfigurable">
+    </applicationConfigurable>
+    <applicationService  serviceImplementation="de.hsrm.mi.ba.plugin.extensions.camunda.model.ServerSettingsState"/>
   </extensions>
 
   <actions>
