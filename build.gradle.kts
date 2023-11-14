@@ -25,6 +25,7 @@ intellij {
 dependencies {
 // https://mvnrepository.com/artifact/com.hubspot.jinjava/jinjava
   implementation("com.hubspot.jinjava:jinjava:2.7.1")
+  implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.9")
 }
 
 tasks {

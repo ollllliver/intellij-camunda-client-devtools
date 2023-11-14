@@ -1,9 +1,10 @@
 package de.hsrm.mi.ba.plugin.extensions.camunda;
 
-
 import com.intellij.openapi.options.Configurable;
 import de.hsrm.mi.ba.plugin.extensions.camunda.client.CamundaClient;
 import de.hsrm.mi.ba.plugin.extensions.camunda.client.OperateClient;
+import de.hsrm.mi.ba.plugin.extensions.camunda.client.dto.BpmnDefinitionsDTO;
+import de.hsrm.mi.ba.plugin.extensions.camunda.client.dto.ProcessDefinitionsInfoDTO;
 import de.hsrm.mi.ba.plugin.extensions.camunda.model.ServerSettings;
 import de.hsrm.mi.ba.plugin.extensions.camunda.model.ServerSettingsState;
 import de.hsrm.mi.ba.plugin.extensions.camunda.ui.ServerSettingsComponent;
@@ -23,7 +24,8 @@ public class ServerSettingsConfigurable implements Configurable {
     }
 
     @Override
-    public @Nullable JComponent createComponent() {
+    @Nullable
+    public JComponent createComponent() {
         settings = Objects.requireNonNull(ServerSettingsState.getInstance().getState()).getSettings();
         serverSettingsComponent = new ServerSettingsComponent(this);
         serverSettingsComponent.setData(settings);
@@ -50,13 +52,30 @@ public class ServerSettingsConfigurable implements Configurable {
         serverSettingsComponent.setData(settings);
     }
 
+//    ##################################################################################################################
+//    ########################################## Operations ############################################################
+//    ##################################################################################################################
+
     public void testConnection() {
         serverSettingsComponent.getData(settings);
-        CamundaClient client = new OperateClient();
+        CamundaClient client;
+        switch (settings.getService()) {
+            case OPERATE:
+                client = new OperateClient();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + settings.getService());
+        }
         if (!client.testConnection(settings)){
             JOptionPane.showMessageDialog(null, client.getErrorMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Connection successful.", "OK", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Connection successful.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            ProcessDefinitionsInfoDTO processDefinitionsInfoDTO = client.getProcessDefinitions();
+            for (ProcessDefinitionsInfoDTO.ProcessDefinition pd : client.getProcessDefinitions().getProcessDefinitions()) {
+                BpmnDefinitionsDTO process = client.getProcess(pd.getKey());
+
+                System.out.println(process);
+            }
         }
     }
 }
